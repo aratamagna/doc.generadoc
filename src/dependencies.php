@@ -1,6 +1,8 @@
 <?php
 // DIC configuration
 
+use Spipu\Html2Pdf\Html2Pdf;
+
 $container = $app->getContainer();
 
 // view renderer
@@ -16,4 +18,14 @@ $container['logger'] = function ($c) {
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
+};
+
+// userlist
+$container['users'] = function ($c) {
+  return $c->get('settings')['users'];
+};
+
+// doc
+$container['doc'] = function ($c) {
+  return new Html2Pdf();
 };

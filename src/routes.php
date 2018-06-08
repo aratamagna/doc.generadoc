@@ -10,7 +10,7 @@ $app->post('/doc/base64', function ($request, $response, $args) {
 
   $this->doc->writeHTML($request->getBody());
 
-  return $response->getBody()>write($this->doc->output('', 'E'));
+  return $response->getBody()->write($this->doc->output('', 'E'));
 });
 
 $app->post('/doc/pdf', function ($request, $response, $args) {
